@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WebRTC Guard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div class="brand-icon" aria-hidden="true">◈</div>
+      <div class="brand-copy">
+        <h1>WebRTC Guard</h1>
+        <p>کنترل ارتباطات WebRTC مرورگر</p>
+      </div>
+      <span class="version">v1.0</span>
+    </header>
+
+    <section class="primary-card" aria-label="تنظیمات مسدودسازی">
+      <div class="switch-row">
+        <div>
+          <h2>مسدودسازی WebRTC</h2>
+          <p>سایت‌ها اجازه ساخت اتصال WebRTC ندارند</p>
+        </div>
+        <label class="switch" title="روشن/خاموش کردن مسدودسازی">
+          <input type="checkbox" id="protection" disabled role="switch" aria-label="مسدودسازی WebRTC">
+          <span class="track"></span>
+        </label>
+      </div>
+      <div class="mode-row">
+        <span class="indicator" id="indicator"></span>
+        <strong id="mode-title">در حال بررسی…</strong>
+        <span class="mode-subtitle" id="mode-subtitle"></span>
+      </div>
+    </section>
+
+    <section class="details-card" aria-label="وضعیت لایه‌های امنیتی">
+      <h3>لایه‌های محافظت</h3>
+      <div class="detail-row">
+        <div><span class="detail-icon">JS</span><span>مسدودسازی API سایت‌ها</span></div>
+        <span class="state-pill" id="api-status">…</span>
+      </div>
+      <div class="detail-row">
+        <div><span class="detail-icon">IP</span><span>محدودسازی UDP مستقیم</span></div>
+        <span class="state-pill" id="udp-status">…</span>
+      </div>
+      <p id="privacy-note" class="small-note" hidden></p>
+    </section>
+
+    <section class="reload-card" id="reload-section" hidden>
+      <div class="reload-title">↻ &nbsp;اعمال تغییرات روی تب‌های باز</div>
+      <p>برای قطع اتصال‌های قبلی و هماهنگ شدن همه تب‌ها، صفحات باید دوباره بارگذاری شوند.</p>
+      <button id="reload-button" type="button" class="reload-button">بارگذاری دوباره تب‌های سایت‌ها</button>
+      <div class="confirm" id="confirm-section" hidden>
+        <p>اطلاعات ذخیره‌نشده در فرم‌ها ممکنه از بین بره. ادامه بدیم؟</p>
+        <div class="confirm-actions">
+          <button type="button" id="confirm-reload">بله، رفرش کن</button>
+          <button type="button" id="cancel-reload">لغو</button>
+        </div>
+      </div>
+    </section>
+
+    <p class="disclaimer">این ابزار دسترسی سایت‌ها به WebRTC رو محدود می‌کنه؛ موتور داخلی Chrome رو حذف نمی‌کنه.</p>
+    <div class="footer">
+      <span>بدون سرور • بدون جمع‌آوری اطلاعات</span>
+      <span id="busy-label"></span>
+    </div>
+    <p id="error" class="error" role="alert" hidden></p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
